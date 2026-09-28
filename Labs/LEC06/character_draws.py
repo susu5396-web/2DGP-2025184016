@@ -47,8 +47,8 @@ def move_triangle_up():
 
     for z in range(51):
        draw_character(x, y)
-       x += 3
-       y += 4
+       x += 6
+       y += 8
 
 
 def move_triangle_down():
@@ -57,8 +57,8 @@ def move_triangle_down():
 
     for z in range(51):
         draw_character(x,y)
-        x += 3
-        y -= 4
+        x += 6
+        y -= 8
 
 def move_triangle_bottom():
     x = 700
