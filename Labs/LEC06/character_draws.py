@@ -59,9 +59,10 @@ def move_triangle_down():
         draw_character(x,y)
         x += 3
         y += 4
-        
+
 def move_triangle_bottom():
-    pass
+    x = 700
+    y = 100
 
 def move_triangle():
     move_triangle_up()
