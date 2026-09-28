@@ -45,6 +45,12 @@ def move_triangle_up():
     x = 100
     y = 100
 
+    for z in range(101):
+       draw_character(x, y)
+       x += 3
+       y += 4
+
+
 def move_triangle_down():
     pass
 def move_triangle_bottom():
