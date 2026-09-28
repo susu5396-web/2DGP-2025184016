@@ -12,8 +12,8 @@ def move_circle():
         draw_character(x,y)
     
 def move_top():
-    for x in range(50,750,10):
-        draw_character(x,550)
+    for x in range(200,600,10):
+        draw_character(x,450)
 
 def draw_character(x,y):
     clear_canvas()
