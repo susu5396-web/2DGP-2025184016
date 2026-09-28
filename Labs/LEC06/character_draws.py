@@ -45,7 +45,7 @@ def move_triangle_up():
     x = 100
     y = 100
 
-    for z in range(101):
+    for z in range(51):
        draw_character(x, y)
        x += 3
        y += 4
@@ -55,7 +55,7 @@ def move_triangle_down():
     x = 400
     y = 500
 
-    for z in range(101):
+    for z in range(51):
         draw_character(x,y)
         x += 3
         y -= 4
@@ -64,7 +64,7 @@ def move_triangle_bottom():
     x = 700
     y = 100
 
-    for z in range(101):
+    for z in range(51):
         draw_character(x,y)
         x -= 6
 
