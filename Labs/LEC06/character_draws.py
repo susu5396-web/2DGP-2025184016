@@ -26,8 +26,8 @@ def move_right():
         draw_character(600,y)
 
 def move_bottom():
-    for x in range(750,50,-10):
-        draw_character(x,50)
+    for x in range(600,200,-10):
+        draw_character(x,150)
     
 def move_left():
     for y in range(50,550,10):
