@@ -1,3 +1,10 @@
 {
-    "python.terminal.executeInFileDir": true
+    "python.terminal.executeInFileDir": true,
+    "python-envs.pythonProjects": [
+        {
+            "path": "lec05/character.py",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ]
 }
