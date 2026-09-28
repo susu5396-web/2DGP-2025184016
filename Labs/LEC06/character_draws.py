@@ -52,7 +52,9 @@ def move_triangle_up():
 
 
 def move_triangle_down():
-    pass
+    x = 400
+    y = 500
+    
 def move_triangle_bottom():
     pass
 
