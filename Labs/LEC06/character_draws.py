@@ -66,7 +66,7 @@ def move_triangle_bottom():
 
     for z in range(101):
         draw_character(x,y)
-        x += 3
+        x -= 6
 
     pass
 
