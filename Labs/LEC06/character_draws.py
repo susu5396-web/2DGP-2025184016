@@ -43,7 +43,8 @@ def move_rectangle():
 
 def move_triangle_up():
     pass
-
+def move_triangle_down():
+    pass
 def move_triangle():
     move_triangle_up()
     move_triangle_down()
