@@ -10,7 +10,7 @@ def move_circle():
         x = 400 + 200*math.cos(theta)
         y = 300 + 200*math.sin(theta)
         draw_character(x,y)
-    pass
+    
 def move_top():
     for x in range(50,750,10):
         draw_character(x,550)
@@ -39,8 +39,7 @@ def move_rectangle():
     move_bottom()
     move_left()
    
-    pass
-
+    
 def move_triangle_up():
     x = 100
     y = 100
@@ -68,18 +67,18 @@ def move_triangle_bottom():
         draw_character(x,y)
         x -= 12
 
-    pass
+ 
 
 def move_triangle():
     move_triangle_up()
     move_triangle_down()
     move_triangle_bottom()
-    pass
+
 
 while True:
     move_circle()
     move_rectangle()
     move_triangle()
-    pass
+
 
 close_canvas()
