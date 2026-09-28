@@ -40,8 +40,12 @@ def move_rectangle():
     move_left()
    
     pass
+
+def move_triangle_up():
+    pass
+
 def move_triangle():
-    move_triangle_top()
+    move_triangle_up()
     move_triangle_down()
     move_triangle_bottom()
     pass
