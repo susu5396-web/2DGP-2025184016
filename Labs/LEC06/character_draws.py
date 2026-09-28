@@ -30,8 +30,8 @@ def move_bottom():
         draw_character(x,150)
     
 def move_left():
-    for y in range(50,550,10):
-        draw_character(50,y)
+    for y in range(150,450,10):
+        draw_character(200,y)
 
 def move_rectangle():
     move_top()
