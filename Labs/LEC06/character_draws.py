@@ -42,7 +42,9 @@ def move_rectangle():
     pass
 
 def move_triangle_up():
-    pass
+    x = 100
+    y = 100
+
 def move_triangle_down():
     pass
 def move_triangle_bottom():
