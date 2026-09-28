@@ -1,3 +1,4 @@
+import math
 from pico2d import *
 
 open_canvas(800, 600)
@@ -10,5 +11,12 @@ def draw_character(x, y):
     delay(0.03)
 
 
+def move_circle():
+    for degree in range(0, 361, 2):
+        theta = math.radians(degree)
+        x = 400 + 200 * math.cos(theta)
+        y = 300 + 200 * math.sin(theta)
+        draw_character(x, y)
+
 while True:
-    draw_character(400, 300)
+    move_circle()
