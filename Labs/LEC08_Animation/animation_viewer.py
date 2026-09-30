@@ -20,7 +20,7 @@ for count in range(4):
     )
 
     update_canvas()
-    delay(0.15)
+    delay(0.4)
 
     frame = (frame + 1) % 4
 
