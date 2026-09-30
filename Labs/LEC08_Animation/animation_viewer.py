@@ -8,7 +8,7 @@ w = character.w // 4
 h = character.h // 4
 frame = 0
 
-for x in range(550, 250, -10):
+for x in range(550, 250, -15):
     clear_canvas()
 
     character.clip_composite_draw(
@@ -23,5 +23,7 @@ for x in range(550, 250, -10):
 
     frame = (frame + 1) % 4
     delay(0.15)
+
+delay(1)
 
 close_canvas()
