@@ -9,7 +9,7 @@ h = character.h // 4
 
 frame = 0
 
-for count in range(4):
+for count in range(4 * 5):
     clear_canvas()
 
     character.clip_draw(
