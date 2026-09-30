@@ -66,4 +66,24 @@ for count in range(4*5):
 
 delay(1)
 
+frame = 0
+
+for count in range(4):
+    clear_canvas()
+
+    character.clip_draw(
+        frame * w, 0,
+        w, h + 10,
+        x, 400,
+        500, 500
+    )
+
+    update_canvas()
+
+    frame = (frame + 1) % 4
+    delay(0.15)
+
+
+delay(1)
+
 close_canvas()
