@@ -51,7 +51,7 @@ for count in range(4):
 
     character.clip_draw(
         frame * w, h * 2,
-        w, h ,
+        w, h - 10 ,
         x, 400,
         500, 500
     )
