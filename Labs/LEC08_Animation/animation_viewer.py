@@ -4,21 +4,24 @@ open_canvas(800, 800)
 
 character = load_image('loopy_sprite_sheet.png')
 
-frame = 0
-
-clear_canvas()
-
-
 w = character.w // 4
 h = character.h // 4
 
-character.clip_draw(
-    frame * w, h * 3-10,
-    w, h,
-    400, 400,
-    500, 500
-)
-update_canvas()
+frame = 0
 
-delay(3)
+for count in range(4):
+    clear_canvas()
+
+    character.clip_draw(
+        frame * w, h * 3 - 10,
+        w, h + 10,
+        400, 400,
+        500, 500
+    )
+
+    update_canvas()
+    delay(0.15)
+
+    frame = (frame + 1) % 4
+
 close_canvas()
