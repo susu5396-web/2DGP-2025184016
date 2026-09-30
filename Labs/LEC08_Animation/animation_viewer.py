@@ -50,8 +50,8 @@ for count in range(4*5):
     clear_canvas()
 
     character.clip_draw(
-        frame * w, h * 2,
-        w, h -10 ,
+        frame * w + 10, h * 2,
+        w - 10, h -10 ,
         x, 400,
         500, 500
     )
