@@ -13,7 +13,7 @@ w = character.w // 4
 h = character.h // 4
 
 character.clip_draw(
-    frame * w, h * 3,
+    frame * w, h * 3-10,
     w, h,
     400, 400,
     500, 500
