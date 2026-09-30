@@ -32,8 +32,8 @@ for count in range(4):
     clear_canvas()
 
     character.clip_composite_draw(
-        frame * w, h ,
-        w, h,
+        frame * w, h + 10 ,
+        w, h - 20,
         0, 'h',
         x, 400,
         500, 500
