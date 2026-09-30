@@ -46,4 +46,24 @@ for count in range(4 *5):
 
 delay(1)
 
+for count in range(4):
+    clear_canvas()
+
+    character.clip_draw(
+        frame * w, h * 2,
+        w, h ,
+        x, 400,
+        500, 500
+    )
+
+    update_canvas()
+
+    frame = (frame + 1) % 4
+    delay(0.1)
+
+    if count < 19:
+        x += 15
+
+delay(1)
+
 close_canvas()
