@@ -28,7 +28,7 @@ delay(1)
 
 frame = 0
 
-for count in range(4):
+for count in range(4 *5):
     clear_canvas()
 
     character.clip_composite_draw(
@@ -44,7 +44,6 @@ for count in range(4):
     frame = (frame + 1) % 4
     delay(0.15)
 
-# 점프 완료 후 1초 정지
 delay(1)
 
 close_canvas()
