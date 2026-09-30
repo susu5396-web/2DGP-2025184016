@@ -6,84 +6,87 @@ character = load_image('loopy_sprite_sheet.png')
 
 w = character.w // 4
 h = character.h // 4
-frame = 0
 
-for x in range(550, 250, -15):
-    clear_canvas()
+while True:
+    frame = 0
 
-    character.clip_composite_draw(
-        frame * w, h * 3 - 10,
-        w, h + 10,
-        0, 'h',
-        x, 400,
-        500, 500
-    )
+    for x in range(550, 250, -15):
+        clear_canvas()
 
-    update_canvas()
+        character.clip_composite_draw(
+            frame * w, h * 3 - 10,
+            w, h + 10,
+            0, 'h',
+            x, 400,
+            500, 500
+        )
 
-    frame = (frame + 1) % 4
-    delay(0.15)
+        update_canvas()
 
-delay(1)
+        frame = (frame + 1) % 4
+        delay(0.15)
 
-frame = 0
+    delay(1)
 
-for count in range(4 *5):
-    clear_canvas()
+    frame = 0
 
-    character.clip_composite_draw(
-        frame * w, h + 10 ,
-        w, h - 20,
-        0, 'h',
-        x, 400,
-        500, 500
-    )
+    for count in range(4 * 5):
+        clear_canvas()
 
-    update_canvas()
+        character.clip_composite_draw(
+            frame * w, h + 10,
+            w, h - 20,
+            0, 'h',
+            x, 400,
+            500, 500
+        )
 
-    frame = (frame + 1) % 4
-    delay(0.15)
+        update_canvas()
 
-delay(1)
+        frame = (frame + 1) % 4
+        delay(0.15)
 
-for count in range(4*5):
-    clear_canvas()
+    delay(1)
 
-    character.clip_draw(
-        frame * w + 10, h * 2,
-        w - 10, h -10 ,
-        x, 400,
-        500, 500
-    )
+    frame = 0
 
-    update_canvas()
+    for count in range(4 * 5):
+        clear_canvas()
 
-    frame = (frame + 1) % 4
-    delay(0.1)
+        character.clip_draw(
+            frame * w + 10, h * 2,
+            w - 10, h - 10,
+            x, 400,
+            500, 500
+        )
 
-    if count < 19:
-        x += 15
+        update_canvas()
 
-delay(1)
+        frame = (frame + 1) % 4
+        delay(0.1)
 
-frame = 0
+        if count < 19:
+            x += 15
 
-for count in range(4 * 5):
-    clear_canvas()
+    delay(1)
 
-    character.clip_draw(
-        frame * w, 0,
-        w, h + 10,
-        x, 350,
-        500, 500
-    )
+    frame = 0
 
-    update_canvas()
+    for count in range(4 * 5):
+        clear_canvas()
 
-    frame = (frame + 1) % 4
-    delay(0.2)
+        character.clip_draw(
+            frame * w, 0,
+            w, h + 10,
+            x, 350,
+            500, 500
+        )
 
+        update_canvas()
 
-delay(1)
+        frame = (frame + 1) % 4
+        delay(0.2)
+
+    delay(1)
 
 close_canvas()
