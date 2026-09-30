@@ -12,9 +12,10 @@ frame = 0
 for count in range(4 * 5):
     clear_canvas()
 
-    character.clip_draw(
+    character.clip_composite_draw(
         frame * w, h * 3 - 10,
         w, h + 10,
+        0,'h',
         400, 400,
         500, 500
     )
