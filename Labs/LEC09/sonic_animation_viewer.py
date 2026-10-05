@@ -1,6 +1,15 @@
 from pathlib import Path
 
-from pico2d import clear_canvas, close_canvas, delay, load_image, open_canvas, update_canvas
+from pico2d import (
+    SDL_QUIT,
+    clear_canvas,
+    close_canvas,
+    delay,
+    get_events,
+    load_image,
+    open_canvas,
+    update_canvas,
+)
 
 CANVAS_WIDTH = 1200
 CANVAS_HEIGHT = 800
@@ -75,6 +84,13 @@ def draw_frame(sprite_sheet, frame_box):
         frame_height * FRAME_SCALE,
     )
     update_canvas()
+
+
+def handle_events():
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            return False
+    return True
 
 
 def main():
