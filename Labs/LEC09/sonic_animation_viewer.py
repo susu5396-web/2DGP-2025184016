@@ -124,8 +124,7 @@ def main():
     open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
     try:
         sprite_sheet = load_image(str(SPRITE_PATH))
-        draw_frame(sprite_sheet, ANIMATION_FRAME_BOXES[0][0])
-        delay(0.5)
+        play_all_animations(sprite_sheet)
     finally:
         close_canvas()
 
