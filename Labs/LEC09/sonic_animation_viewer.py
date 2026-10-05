@@ -16,9 +16,11 @@ CANVAS_HEIGHT = 800
 SPRITE_PATH = Path(__file__).resolve().with_name("sonic-sprite.png")
 FRAME_SCALE = 3
 FRAME_DELAY = 0.1
+FRAME_MOVE_STEP = 12
 ANIMATION_REPEAT_COUNT = 5
 ANIMATION_PAUSE = 1.0
 ANIMATION_PAUSE_CHECKS = 10
+ANIMATION_MOVES = (True, True, False, True, True, True, True, False, False, False)
 ANIMATION_FRAME_BOXES = (
     (
         (1, 39, 30, 78), (31, 40, 57, 78), (58, 39, 86, 78),
@@ -70,11 +72,13 @@ ANIMATION_FRAME_BOXES = (
 )
 
 
-def draw_frame(sprite_sheet, frame_box):
+def draw_frame(sprite_sheet, frame_box, canvas_x=None):
     left, top, right, bottom = frame_box
     frame_width = right - left
     frame_height = bottom - top
     source_y = sprite_sheet.h - bottom
+    if canvas_x is None:
+        canvas_x = CANVAS_WIDTH // 2
 
     clear_canvas()
     sprite_sheet.clip_draw(
@@ -82,7 +86,7 @@ def draw_frame(sprite_sheet, frame_box):
         source_y,
         frame_width,
         frame_height,
-        CANVAS_WIDTH // 2,
+        canvas_x,
         CANVAS_HEIGHT // 2,
         frame_width * FRAME_SCALE,
         frame_height * FRAME_SCALE,
@@ -91,6 +95,8 @@ def draw_frame(sprite_sheet, frame_box):
 
 
 def validate_animation_data(sprite_sheet):
+    if len(ANIMATION_MOVES) != len(ANIMATION_FRAME_BOXES):
+        raise ValueError("Animation movement settings do not match animation data")
     for animation_index, frame_boxes in enumerate(ANIMATION_FRAME_BOXES, start=1):
         if not frame_boxes:
             raise ValueError(f"Animation {animation_index} has no frames")
@@ -108,12 +114,17 @@ def handle_events():
     return True
 
 
-def play_animation(sprite_sheet, frame_boxes):
+def play_animation(sprite_sheet, frame_boxes, moves=False):
+    total_frame_count = len(frame_boxes) * ANIMATION_REPEAT_COUNT
+    start_x = (CANVAS_WIDTH - (total_frame_count - 1) * FRAME_MOVE_STEP) // 2
+    movement_frame = 0
     for _ in range(ANIMATION_REPEAT_COUNT):
         for frame_box in frame_boxes:
             if not handle_events():
                 return False
-            draw_frame(sprite_sheet, frame_box)
+            canvas_x = start_x + movement_frame * FRAME_MOVE_STEP if moves else None
+            draw_frame(sprite_sheet, frame_box, canvas_x)
+            movement_frame += 1
             delay(FRAME_DELAY)
     return True
 
@@ -129,8 +140,8 @@ def wait_between_animations():
 
 def play_all_animations(sprite_sheet):
     while True:
-        for frame_boxes in ANIMATION_FRAME_BOXES:
-            if not play_animation(sprite_sheet, frame_boxes):
+        for frame_boxes, moves in zip(ANIMATION_FRAME_BOXES, ANIMATION_MOVES):
+            if not play_animation(sprite_sheet, frame_boxes, moves):
                 return False
             if not wait_between_animations():
                 return False
