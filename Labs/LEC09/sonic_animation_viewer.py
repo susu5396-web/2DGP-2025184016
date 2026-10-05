@@ -111,6 +111,15 @@ def wait_between_animations():
     return handle_events()
 
 
+def play_all_animations(sprite_sheet):
+    while True:
+        for frame_boxes in ANIMATION_FRAME_BOXES:
+            if not play_animation(sprite_sheet, frame_boxes):
+                return False
+            if not wait_between_animations():
+                return False
+
+
 def main():
     open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
     try:
