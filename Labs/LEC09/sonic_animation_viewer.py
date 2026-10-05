@@ -89,6 +89,17 @@ def draw_frame(sprite_sheet, frame_box):
     update_canvas()
 
 
+def validate_animation_data(sprite_sheet):
+    for animation_index, frame_boxes in enumerate(ANIMATION_FRAME_BOXES, start=1):
+        if not frame_boxes:
+            raise ValueError(f"Animation {animation_index} has no frames")
+        for frame_index, (left, top, right, bottom) in enumerate(frame_boxes, start=1):
+            if not (0 <= left < right <= sprite_sheet.w and 0 <= top < bottom <= sprite_sheet.h):
+                raise ValueError(
+                    f"Invalid frame bounds in animation {animation_index}, frame {frame_index}"
+                )
+
+
 def handle_events():
     for event in get_events():
         if event.type == SDL_QUIT:
@@ -124,6 +135,7 @@ def main():
     open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
     try:
         sprite_sheet = load_image(str(SPRITE_PATH))
+        validate_animation_data(sprite_sheet)
         play_all_animations(sprite_sheet)
     finally:
         close_canvas()
