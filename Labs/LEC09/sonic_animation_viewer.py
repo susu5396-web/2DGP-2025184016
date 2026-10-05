@@ -15,6 +15,8 @@ CANVAS_WIDTH = 1200
 CANVAS_HEIGHT = 800
 SPRITE_PATH = Path(__file__).resolve().with_name("sonic-sprite.png")
 FRAME_SCALE = 6
+FRAME_DELAY = 0.1
+ANIMATION_REPEAT_COUNT = 5
 ANIMATION_FRAME_BOXES = (
     (
         (1, 39, 30, 78), (31, 40, 57, 78), (58, 39, 86, 78),
@@ -90,6 +92,16 @@ def handle_events():
     for event in get_events():
         if event.type == SDL_QUIT:
             return False
+    return True
+
+
+def play_animation(sprite_sheet, frame_boxes):
+    for _ in range(ANIMATION_REPEAT_COUNT):
+        for frame_box in frame_boxes:
+            if not handle_events():
+                return False
+            draw_frame(sprite_sheet, frame_box)
+            delay(FRAME_DELAY)
     return True
 
 
