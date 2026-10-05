@@ -14,7 +14,7 @@ from pico2d import (
 CANVAS_WIDTH = 1200
 CANVAS_HEIGHT = 800
 SPRITE_PATH = Path(__file__).resolve().with_name("sonic-sprite.png")
-FRAME_SCALE = 6
+FRAME_SCALE = 3
 FRAME_DELAY = 0.1
 ANIMATION_REPEAT_COUNT = 5
 ANIMATION_PAUSE = 1.0
