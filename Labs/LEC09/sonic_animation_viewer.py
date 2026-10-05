@@ -17,6 +17,7 @@ SPRITE_PATH = Path(__file__).resolve().with_name("sonic-sprite.png")
 FRAME_SCALE = 6
 FRAME_DELAY = 0.1
 ANIMATION_REPEAT_COUNT = 5
+ANIMATION_PAUSE = 1.0
 ANIMATION_FRAME_BOXES = (
     (
         (1, 39, 30, 78), (31, 40, 57, 78), (58, 39, 86, 78),
@@ -103,6 +104,11 @@ def play_animation(sprite_sheet, frame_boxes):
             draw_frame(sprite_sheet, frame_box)
             delay(FRAME_DELAY)
     return True
+
+
+def wait_between_animations():
+    delay(ANIMATION_PAUSE)
+    return handle_events()
 
 
 def main():
