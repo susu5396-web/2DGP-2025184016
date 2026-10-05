@@ -1,10 +1,11 @@
 from pathlib import Path
 
-from pico2d import close_canvas, load_image, open_canvas
+from pico2d import clear_canvas, close_canvas, delay, load_image, open_canvas, update_canvas
 
 CANVAS_WIDTH = 1200
 CANVAS_HEIGHT = 800
 SPRITE_PATH = Path(__file__).resolve().with_name("sonic-sprite.png")
+FRAME_SCALE = 6
 ANIMATION_FRAME_BOXES = (
     (
         (1, 39, 30, 78), (31, 40, 57, 78), (58, 39, 86, 78),
@@ -56,10 +57,32 @@ ANIMATION_FRAME_BOXES = (
 )
 
 
+def draw_frame(sprite_sheet, frame_box):
+    left, top, right, bottom = frame_box
+    frame_width = right - left
+    frame_height = bottom - top
+    source_y = sprite_sheet.h - bottom
+
+    clear_canvas()
+    sprite_sheet.clip_draw(
+        left,
+        source_y,
+        frame_width,
+        frame_height,
+        CANVAS_WIDTH // 2,
+        CANVAS_HEIGHT // 2,
+        frame_width * FRAME_SCALE,
+        frame_height * FRAME_SCALE,
+    )
+    update_canvas()
+
+
 def main():
     open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
     try:
         sprite_sheet = load_image(str(SPRITE_PATH))
+        draw_frame(sprite_sheet, ANIMATION_FRAME_BOXES[0][0])
+        delay(0.5)
     finally:
         close_canvas()
 
