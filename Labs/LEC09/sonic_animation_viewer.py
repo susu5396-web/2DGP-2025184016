@@ -18,6 +18,7 @@ FRAME_SCALE = 6
 FRAME_DELAY = 0.1
 ANIMATION_REPEAT_COUNT = 5
 ANIMATION_PAUSE = 1.0
+ANIMATION_PAUSE_CHECKS = 10
 ANIMATION_FRAME_BOXES = (
     (
         (1, 39, 30, 78), (31, 40, 57, 78), (58, 39, 86, 78),
@@ -118,8 +119,12 @@ def play_animation(sprite_sheet, frame_boxes):
 
 
 def wait_between_animations():
-    delay(ANIMATION_PAUSE)
-    return handle_events()
+    pause_interval = ANIMATION_PAUSE / ANIMATION_PAUSE_CHECKS
+    for _ in range(ANIMATION_PAUSE_CHECKS):
+        delay(pause_interval)
+        if not handle_events():
+            return False
+    return True
 
 
 def play_all_animations(sprite_sheet):
