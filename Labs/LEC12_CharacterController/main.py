@@ -59,4 +59,5 @@ while running:
     update_world()
     render_world()
     delay(0.01)
-# finaliza
+# finalization code
+close_canvas()

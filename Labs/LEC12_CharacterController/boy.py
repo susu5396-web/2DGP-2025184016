@@ -36,7 +36,7 @@ class Boy:
             after='enter_sleep',
         )
         self.state_machine.add_transition(
-            trigger='start_run', source='IDLE', dest='RUN',
+            trigger='start_run', source=['IDLE', 'SLEEP'], dest='RUN',
             after='enter_run',
         )
         self.state_machine.add_transition(
@@ -75,12 +75,12 @@ class Boy:
             if event.key == SDLK_LEFT:
                 self.left_down = True
                 self.face_dir = -1
-                if self.state == 'IDLE':
+                if self.state in ('IDLE', 'SLEEP'):
                     self.start_run()
             elif event.key == SDLK_RIGHT:
                 self.right_down = True
                 self.face_dir = 1
-                if self.state == 'IDLE':
+                if self.state in ('IDLE', 'SLEEP'):
                     self.start_run()
 
         elif event.type == SDL_KEYUP:
@@ -113,9 +113,11 @@ class Boy:
 
     def draw(self):
         if self.state == 'SLEEP':
+            source_y = 300 if self.face_dir == 1 else 200
+            sleep_angle = 3.141592 / 2 if self.face_dir == 1 else -3.141592 / 2
             self.image.clip_composite_draw(
-                self.frame * 100, 300, 100, 100,
-                3.141592 / 2, '', self.x - 25, self.y - 25,
+                self.frame * 100, source_y, 100, 100,
+                sleep_angle, '', self.x - 25, self.y - 25,
                 100, 100,
             )
         elif self.state == 'RUN':
