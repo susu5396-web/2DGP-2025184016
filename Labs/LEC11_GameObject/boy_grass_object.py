@@ -21,12 +21,17 @@ class Boy:
         self.x += 5
     def draw(self):
         self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
-        
+
 class Ball:
     def __init__(self):
         self.image = load_image('ball41x41.png')
-        self.x = 80
+        self.x = random.randint(1,1000)
         self.y = 90
+        self.speed = self.randint(2,6)
+    def update(self):
+        self.y += self.speed
+        if self.y >= 600:
+            self.y = 600
 
 class Zombie:
     def __init__(self):
@@ -53,6 +58,8 @@ def reset_world():
     grass = Grass()
     world.append(grass)
     world.append(Zombie())
+
+  
 
     team = [Boy() for i in range(11)]
     world += team
