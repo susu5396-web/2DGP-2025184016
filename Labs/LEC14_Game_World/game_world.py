@@ -5,7 +5,11 @@ def add_object(o):
     world.append(o) #객체를 게임월드에 추가하는거
 
 def remove_object(o):
-    world.remove(o)
+    if o in world: #만약 없다면 프로그램 터지는거 방지하려고
+        world.remove(o)
+        
+
+   
 
 
 def update():
