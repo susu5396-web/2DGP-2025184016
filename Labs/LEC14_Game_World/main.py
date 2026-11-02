@@ -24,14 +24,13 @@ def handle_events():
 def reset_world():
     global boy
 
-    for layer in game_world.world:
-        layer.clear()
+    game_world.world.clear()
 
     grass = Grass()
-    game_world.add_object(grass, 0)
+    game_world.add_object(grass) #바깥으로 분리한겨
 
     boy = Boy()
-    game_world.add_object(boy, 1)
+    game_world.add_object(boy)
 
 
 
