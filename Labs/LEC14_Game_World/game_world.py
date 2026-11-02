@@ -17,7 +17,7 @@ def remove_object(o):
 
 def update():
     for layer in world:
-        for o in layer:
+        for o in layer[:]:
             o.update()
 
 def render():
