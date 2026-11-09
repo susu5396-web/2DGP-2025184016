@@ -18,7 +18,7 @@ def handle_events():
 
 
 
-def reset_world():
+def init(): #초기화
     global boy
 
 
@@ -30,15 +30,17 @@ def reset_world():
 
 
 
-def update_world():
+def update():
     game_world.update()
 
 
-def render_world():
+def render():
     clear_canvas()
     game_world.render()
     update_canvas()
 
+def finish():
+    pass
 
 running = True
 
