@@ -1,5 +1,4 @@
 from pico2d import *
-from Labs.LEC12_CharacterController.main import render_world
 import play_mode
 
 
