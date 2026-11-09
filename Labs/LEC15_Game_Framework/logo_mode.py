@@ -20,7 +20,7 @@ def update():
     global logo_start_time
 
     if get_time()-logo_start_time >= 2.0:
-        game_framework.change_mode(title_mode)
+        game_framework.change_mode(title_mode) #여기서 연결해주네
 
 def render():
     clear_canvas()
