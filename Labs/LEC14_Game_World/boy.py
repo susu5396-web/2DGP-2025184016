@@ -11,7 +11,7 @@ from ball import Ball
 
 class Boy:
     def __init__(self):
-        self.x, self.y = 400, 90
+        self.x, self.y = 400, 30 #소년의 초기위치
         self.frame = 0
         self.image = load_image('animation_sheet.png')
         self.idle_started_at = get_time()
@@ -52,7 +52,7 @@ class Boy:
     def fire_ball(self):
         ball = Ball(self.x + self.face_dir * 30, self.y - 20,
                     self.face_dir)
-        game_world.add_object(ball)
+        game_world.add_object(ball,1)
         if self.state == 'IDLE':
             self.idle_started_at = get_time()
 

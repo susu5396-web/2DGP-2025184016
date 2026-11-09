@@ -24,13 +24,14 @@ def handle_events():
 def reset_world():
     global boy
 
-    game_world.world.clear()
-
-    grass = Grass()
-    game_world.add_object(grass) #바깥으로 분리한겨
+    game_world.clear()
 
     boy = Boy()
-    game_world.add_object(boy)
+    game_world.add_object(boy,1) #소년을 먼저 그 뒤 잔디생성해서 소년위 잔디가 보임 
+
+    grass = Grass()
+    game_world.add_object(grass,0) #바깥으로 분리한겨
+
 
 
 
